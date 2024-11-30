@@ -16,15 +16,18 @@ To answer this, I evaluate:
 ---
 
 ## **Data Source**
-I’m working with a dataset containing detailed aviation accident data with 19 columns, including:
-- **Aircraft_Make**, **Aircraft_Model**: Aircraft type identifiers.
-- **Total_Uninjured**, **Total_Fatal_Injuries**, **Total_Serious_Injuries**: Severity of injuries.
-- **Flight_Phase**: Accident phases like takeoff, cruise, or landing.
-- **Event_Date**: Accident dates for trend analysis.
 
-I’ve cleaned and preprocessed the data to ensure consistency and accuracy.
+The analysis is based on the **NTSB Aviation Accident Database**, a comprehensive dataset available on [Kaggle](https://www.kaggle.com/datasets/khsamaha/aviation-accident-database-synopses). This dataset includes detailed information about aviation accidents, such as:
 
----
+- **Aircraft Make and Model**: Identifying the type of aircraft involved.  
+- **Injury Data**: Total uninjured, fatal, and serious injuries.  
+- **Flight Phase**: Flight stage during the accident (e.g., takeoff, cruise, landing).  
+- **Accident Date and Location**: For trend and geographical analysis.  
+
+The dataset has been cleaned and preprocessed to ensure accurate and reliable analysis.
+
+--- 
+
 
 ## **Key Visualizations**
 To tackle the business question and uncover insights, I’ve created these graphs:
