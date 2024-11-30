@@ -15,19 +15,37 @@ To answer this, I evaluate:
 
 ---
 
+
 ## **Data Source**
 
-The analysis is based on the **NTSB Aviation Accident Database**, a comprehensive dataset available on [Kaggle](https://www.kaggle.com/datasets/khsamaha/aviation-accident-database-synopses). This dataset includes detailed information about aviation accidents, such as:
+The analysis is based on the **NTSB Aviation Accident Database**, a comprehensive dataset available on [Kaggle](https://www.kaggle.com/datasets/khsamaha/aviation-accident-database-synopses). This dataset includes detailed records of aviation accidents, with essential fields such as aircraft make/model, accident dates, injury counts, and flight phases.
 
-- **Aircraft Make and Model**: Identifying the type of aircraft involved.  
-- **Injury Data**: Total uninjured, fatal, and serious injuries.  
-- **Flight Phase**: Flight stage during the accident (e.g., takeoff, cruise, landing).  
-- **Accident Date and Location**: For trend and geographical analysis.  
+### **Datasets Used**
 
-The dataset has been cleaned and preprocessed to ensure accurate and reliable analysis.
+- **Raw Dataset (AviationData.csv)**  
+  - Contains detailed aviation accident records with 31 columns and 88,889 rows.  
+  - Includes fields such as aircraft make/model, accident dates, injury counts, and flight phases.  
+  - Not cleaned; requires pre-processing for analysis.
 
---- 
+- **Cleaned Dataset (aviation_data_clean.csv)**  
+  - A streamlined version of the raw dataset with 18 essential columns and 48,090 rows.  
+  - Contains cleaned and standardized fields for easier analysis.
 
+### **Key Fields Used in Analysis**
+
+| **Field Name**         | **Description**                                                                 |
+|------------------------|---------------------------------------------------------------------------------|
+| **Aircraft_Make**       | Manufacturer of the aircraft.                                                   |
+| **Aircraft_Model**      | Specific model of the aircraft.                                                 |
+| **Total_Uninjured**     | Total number of people uninjured in the accident.                               |
+| **Total_Fatal_Injuries**| Total number of fatalities in the accident.                                     |
+| **Total_Serious_Injuries**| Total number of serious injuries in the accident.                            |
+| **Total_Minor_Injuries**| Total number of minor injuries in the accident.                                 |
+| **Flight_Phase**        | Phase of flight during the accident (e.g., Takeoff, Cruise).                    |
+| **Event_Date**          | Date when the event occurred.                                                   |
+| **Purpose_of_Flight**   | Purpose of the flight (e.g., Business, Personal).                              |
+
+---
 
 ## **Key Visualizations**
 To tackle the business question and uncover insights, I’ve created these graphs:
