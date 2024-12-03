@@ -1,5 +1,23 @@
 # **Aviation Risk Analysis for Business Expansion**
 
+## **Index**
+
+1. [Project Overview](#project-overview)  
+2. [Business Question](#business-question)  
+3. [Data Source](#data-source)  
+4. [Key Visualizations](#key-visualizations)  
+   - [Python Visualizations](#python-visualizations)  
+   - [Tableau Dashboards](#tableau-dashboards)  
+5. [Data Cleaning & Transformation](#data-cleaning-transformation)  
+6. [Methodology](#methodology)  
+7. [Insights and Recommendations](#insights-and-recommendations)  
+8. [How to Run the Code](#how-to-run-the-code)  
+9. [Project Structure](#project-structure)  
+10. [Future Work](#future-work)  
+11. [Contributors](#contributors)  
+
+---
+
 ## **Project Overview**
 I aim to analyze aviation accident data to pinpoint the safest aircraft models for a company venturing into aviation. By examining historical safety data, I’ll recommend aircraft that are ideal for commercial and private operations, focusing on key safety metrics like injury severity, accident trends, and flight phase risks. This analysis is designed to provide actionable insights for business decision-making.
 
@@ -14,7 +32,6 @@ To answer this, I evaluate:
 - Industry-wide safety trends over time.
 
 ---
-
 
 ## **Data Source**
 
@@ -50,17 +67,49 @@ The analysis is based on the **NTSB Aviation Accident Database**, a comprehensiv
 ## **Key Visualizations**
 To tackle the business question and uncover insights, I’ve created these graphs:
 
-### 1. **Box Plot: Total Uninjured by Aircraft Make and Model**
+### **1. Python Visualizations**
+- **Box Plot: Total Uninjured by Aircraft Make and Model**
    - Visualizes survival rates by aircraft type.
    - **Insight**: Identifies aircraft with high survival rates for low-risk operations.
 
-### 2. **Bar Plot: Fatal and Serious Injuries by Flight Phase**
+- **Bar Plot: Fatal and Serious Injuries by Flight Phase**
    - Highlights the riskiest phases of flight.
    - **Insight**: Pinpoints critical phases needing enhanced safety measures.
 
-### 3. **Line Plot: Number of People Involved in Accidents Per Year**
-   - Displays injury and fatality trends over time.
-   - **Insight**: Assesses safety improvements and highlights manufacturers with consistent safety records.
+### **2. Tableau Dashboards**
+- **Box Plot: Total Uninjured by Aircraft Make and Model**
+- **Bubble Chart: Proportion of Fatalities by Flight Phase**
+- **Line Chart: Number of People Involved in Accidents Per Year**
+- **Interactive Features**  
+  - Filters for accident years and flight purpose.
+  - Ability to visualize data based on different injury types and flight phases.
+
+---
+
+## **Data Cleaning & Transformation**
+
+### **Classifying Accident Severity**  
+A custom function was applied to classify accident severity based on injury columns:
+```python
+def classify_severity(row):
+    if row['Total_Fatal_Injuries'] > 0:
+        return 'Fatal'
+    elif row['Total_Serious_Injuries'] > 0:
+        return 'Serious'
+    elif row['Total_Minor_Injuries'] > 0:
+        return 'Minor'
+    return 'No Injuries'
+
+aviation_df['Accident_Severity'] = aviation_df.apply(classify_severity, axis=1)
+```
+This creates a new column **Accident_Severity** based on the injury counts.
+
+### **Handling Missing Values in Injury Columns**
+Missing values in `Total_Fatal_Injuries` were filled using `Fatal_Injuries` as a reference:
+```python
+aviation_df['Total_Fatal_Injuries'] = aviation_df['Total_Fatal_Injuries'].fillna(aviation_df['Fatal_Injuries'])
+```
+This ensures that we don't lose valuable data due to missing injury values.
 
 ---
 
@@ -80,7 +129,8 @@ To tackle the business question and uncover insights, I’ve created these graph
 ---
 
 ## **Insights and Recommendations**
-### Key Findings:
+
+### **Key Findings**:
 1. **Low-Risk Aircraft**:
    - Aircraft with high survival rates and low injury counts are ideal choices for acquisition.
 
@@ -90,7 +140,7 @@ To tackle the business question and uncover insights, I’ve created these graph
 3. **Industry Safety Trends**:
    - Accidents and fatalities show a declining trend, reflecting improved safety technologies.
 
-### Recommendations:
+### **Recommendations**:
 - Prioritize aircraft models with outstanding safety records (identified in the box plot).
 - Invest in training and technology for takeoff and approach phases.
 - Collaborate with manufacturers demonstrating consistent safety performance.
@@ -98,6 +148,7 @@ To tackle the business question and uncover insights, I’ve created these graph
 ---
 
 ## **How to Run the Code**
+
 1. **Prerequisites**:
    - Python 3.9 or higher.
    - Required libraries: `pandas`, `matplotlib`, `seaborn`.
@@ -136,4 +187,4 @@ To tackle the business question and uncover insights, I’ve created these graph
 
 Feel free to contact me for questions or collaboration opportunities!
 
---- 
+---
